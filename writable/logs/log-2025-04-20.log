@@ -1,0 +1,561 @@
+INFO - 2025-04-20 07:20:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-04-20 12:41:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-04-20 12:41:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-04-20 12:41:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-04-20 12:41:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-04-20 12:42:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-04-20 12:42:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-04-20 12:43:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-04-20 12:43:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-04-20 12:43:09 --> BadMethodCallException: Call to undefined method App\Models\StatCourseModel::getAllPosttestScoresPaginated
+[Method: GET, Route: admin/nilai_posttest]
+in SYSTEMPATH\Model.php on line 932.
+ 1 APPPATH\Controllers\Admin.php(526): CodeIgniter\Model->__call('getAllPosttestScoresPaginated', [])
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Admin->nilai_posttest()
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-04-20 12:47:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-04-20 12:47:06 --> mysqli_sql_exception: Unknown column 'user.id' in 'field list' in D:\xampp\htdocs\projekfarmasi\system\Database\MySQLi\Connection.php:312
+Stack trace:
+#0 D:\xampp\htdocs\projekfarmasi\system\Database\MySQLi\Connection.php(312): mysqli->query('SELECT COUNT(*)...', 0)
+#1 D:\xampp\htdocs\projekfarmasi\system\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT COUNT(*)...')
+#2 D:\xampp\htdocs\projekfarmasi\system\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT COUNT(*)...')
+#3 D:\xampp\htdocs\projekfarmasi\system\Database\BaseBuilder.php(1720): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*)...', Array, false)
+#4 D:\xampp\htdocs\projekfarmasi\system\Model.php(678): CodeIgniter\Database\BaseBuilder->countAllResults(false)
+#5 D:\xampp\htdocs\projekfarmasi\system\BaseModel.php(1284): CodeIgniter\Model->countAllResults(false)
+#6 D:\xampp\htdocs\projekfarmasi\app\Models\StatCourseModel.php(32): CodeIgniter\BaseModel->paginate(10)
+#7 D:\xampp\htdocs\projekfarmasi\app\Controllers\Admin.php(526): App\Models\StatCourseModel->getAllPosttestScoresPaginated()
+#8 D:\xampp\htdocs\projekfarmasi\system\CodeIgniter.php(933): App\Controllers\Admin->nilai_posttest()
+#9 D:\xampp\htdocs\projekfarmasi\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+#10 D:\xampp\htdocs\projekfarmasi\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 D:\xampp\htdocs\projekfarmasi\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#12 D:\xampp\htdocs\projekfarmasi\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#13 D:\xampp\htdocs\projekfarmasi\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#14 {main}
+CRITICAL - 2025-04-20 12:47:06 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'user.id' in 'field list'
+[Method: GET, Route: admin/nilai_posttest]
+in SYSTEMPATH\Database\BaseConnection.php on line 688.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1720): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*) AS `numrows`
+FROM (
+SELECT `user`.`id`, `user`.`nama`, COUNT(posttest.id) as total_soal, SUM(CASE WHEN jawaban_posttest.id_pilihan = posttest.id_jawaban THEN 1 ELSE 0 END) as benar
+FROM `status_course`
+LEFT JOIN `jawaban_posttest` ON `jawaban_posttest`.`id_pasien` = `user`.`id`
+LEFT JOIN `posttest` ON `jawaban_posttest`.`id_posttest` = `posttest`.`id`
+WHERE `user`.`role` = :user.role:
+GROUP BY `user`.`id`
+) CI_count_all_results', [...], false)
+ 2 SYSTEMPATH\Model.php(678): CodeIgniter\Database\BaseBuilder->countAllResults(false)
+ 3 SYSTEMPATH\BaseModel.php(1284): CodeIgniter\Model->countAllResults(false)
+ 4 APPPATH\Models\StatCourseModel.php(32): CodeIgniter\BaseModel->paginate(10)
+ 5 APPPATH\Controllers\Admin.php(526): App\Models\StatCourseModel->getAllPosttestScoresPaginated()
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Admin->nilai_posttest()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-04-20 12:47:06 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'user.id' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 317.
+ 1 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT COUNT(*) AS `numrows`
+FROM (
+SELECT `user`.`id`, `user`.`nama`, COUNT(posttest.id) as total_soal, SUM(CASE WHEN jawaban_posttest.id_pilihan = posttest.id_jawaban THEN 1 ELSE 0 END) as benar
+FROM `status_course`
+LEFT JOIN `jawaban_posttest` ON `jawaban_posttest`.`id_pasien` = `user`.`id`
+LEFT JOIN `posttest` ON `jawaban_posttest`.`id_posttest` = `posttest`.`id`
+WHERE `user`.`role` = \'pasien\'
+GROUP BY `user`.`id`
+) CI_count_all_results')
+ 2 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT COUNT(*) AS `numrows`
+FROM (
+SELECT `user`.`id`, `user`.`nama`, COUNT(posttest.id) as total_soal, SUM(CASE WHEN jawaban_posttest.id_pilihan = posttest.id_jawaban THEN 1 ELSE 0 END) as benar
+FROM `status_course`
+LEFT JOIN `jawaban_posttest` ON `jawaban_posttest`.`id_pasien` = `user`.`id`
+LEFT JOIN `posttest` ON `jawaban_posttest`.`id_posttest` = `posttest`.`id`
+WHERE `user`.`role` = \'pasien\'
+GROUP BY `user`.`id`
+) CI_count_all_results')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1720): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*) AS `numrows`
+FROM (
+SELECT `user`.`id`, `user`.`nama`, COUNT(posttest.id) as total_soal, SUM(CASE WHEN jawaban_posttest.id_pilihan = posttest.id_jawaban THEN 1 ELSE 0 END) as benar
+FROM `status_course`
+LEFT JOIN `jawaban_posttest` ON `jawaban_posttest`.`id_pasien` = `user`.`id`
+LEFT JOIN `posttest` ON `jawaban_posttest`.`id_posttest` = `posttest`.`id`
+WHERE `user`.`role` = :user.role:
+GROUP BY `user`.`id`
+) CI_count_all_results', [...], false)
+ 4 SYSTEMPATH\Model.php(678): CodeIgniter\Database\BaseBuilder->countAllResults(false)
+ 5 SYSTEMPATH\BaseModel.php(1284): CodeIgniter\Model->countAllResults(false)
+ 6 APPPATH\Models\StatCourseModel.php(32): CodeIgniter\BaseModel->paginate(10)
+ 7 APPPATH\Controllers\Admin.php(526): App\Models\StatCourseModel->getAllPosttestScoresPaginated()
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Admin->nilai_posttest()
+ 9 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+10 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-04-20 12:47:06 --> [Caused by] mysqli_sql_exception: Unknown column 'user.id' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 312.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(312): mysqli->query('SELECT COUNT(*) AS `numrows`
+FROM (
+SELECT `user`.`id`, `user`.`nama`, COUNT(posttest.id) as total_soal, SUM(CASE WHEN jawaban_posttest.id_pilihan = posttest.id_jawaban THEN 1 ELSE 0 END) as benar
+FROM `status_course`
+LEFT JOIN `jawaban_posttest` ON `jawaban_posttest`.`id_pasien` = `user`.`id`
+LEFT JOIN `posttest` ON `jawaban_posttest`.`id_posttest` = `posttest`.`id`
+WHERE `user`.`role` = \'pasien\'
+GROUP BY `user`.`id`
+) CI_count_all_results', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT COUNT(*) AS `numrows`
+FROM (
+SELECT `user`.`id`, `user`.`nama`, COUNT(posttest.id) as total_soal, SUM(CASE WHEN jawaban_posttest.id_pilihan = posttest.id_jawaban THEN 1 ELSE 0 END) as benar
+FROM `status_course`
+LEFT JOIN `jawaban_posttest` ON `jawaban_posttest`.`id_pasien` = `user`.`id`
+LEFT JOIN `posttest` ON `jawaban_posttest`.`id_posttest` = `posttest`.`id`
+WHERE `user`.`role` = \'pasien\'
+GROUP BY `user`.`id`
+) CI_count_all_results')
+ 3 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT COUNT(*) AS `numrows`
+FROM (
+SELECT `user`.`id`, `user`.`nama`, COUNT(posttest.id) as total_soal, SUM(CASE WHEN jawaban_posttest.id_pilihan = posttest.id_jawaban THEN 1 ELSE 0 END) as benar
+FROM `status_course`
+LEFT JOIN `jawaban_posttest` ON `jawaban_posttest`.`id_pasien` = `user`.`id`
+LEFT JOIN `posttest` ON `jawaban_posttest`.`id_posttest` = `posttest`.`id`
+WHERE `user`.`role` = \'pasien\'
+GROUP BY `user`.`id`
+) CI_count_all_results')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1720): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*) AS `numrows`
+FROM (
+SELECT `user`.`id`, `user`.`nama`, COUNT(posttest.id) as total_soal, SUM(CASE WHEN jawaban_posttest.id_pilihan = posttest.id_jawaban THEN 1 ELSE 0 END) as benar
+FROM `status_course`
+LEFT JOIN `jawaban_posttest` ON `jawaban_posttest`.`id_pasien` = `user`.`id`
+LEFT JOIN `posttest` ON `jawaban_posttest`.`id_posttest` = `posttest`.`id`
+WHERE `user`.`role` = :user.role:
+GROUP BY `user`.`id`
+) CI_count_all_results', [...], false)
+ 5 SYSTEMPATH\Model.php(678): CodeIgniter\Database\BaseBuilder->countAllResults(false)
+ 6 SYSTEMPATH\BaseModel.php(1284): CodeIgniter\Model->countAllResults(false)
+ 7 APPPATH\Models\StatCourseModel.php(32): CodeIgniter\BaseModel->paginate(10)
+ 8 APPPATH\Controllers\Admin.php(526): App\Models\StatCourseModel->getAllPosttestScoresPaginated()
+ 9 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Admin->nilai_posttest()
+10 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+11 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-04-20 12:47:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-04-20 12:47:55 --> BadMethodCallException: Call to undefined method App\Models\StatCourseModel::getAllPosttestScoresPaginated
+[Method: GET, Route: admin/nilai_posttest]
+in SYSTEMPATH\Model.php on line 932.
+ 1 APPPATH\Controllers\Admin.php(526): CodeIgniter\Model->__call('getAllPosttestScoresPaginated', [])
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Admin->nilai_posttest()
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-04-20 12:48:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-04-20 12:48:18 --> mysqli_sql_exception: Unknown column 'user.id' in 'field list' in D:\xampp\htdocs\projekfarmasi\system\Database\MySQLi\Connection.php:312
+Stack trace:
+#0 D:\xampp\htdocs\projekfarmasi\system\Database\MySQLi\Connection.php(312): mysqli->query('SELECT COUNT(*)...', 0)
+#1 D:\xampp\htdocs\projekfarmasi\system\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT COUNT(*)...')
+#2 D:\xampp\htdocs\projekfarmasi\system\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT COUNT(*)...')
+#3 D:\xampp\htdocs\projekfarmasi\system\Database\BaseBuilder.php(1720): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*)...', Array, false)
+#4 D:\xampp\htdocs\projekfarmasi\system\Model.php(678): CodeIgniter\Database\BaseBuilder->countAllResults(false)
+#5 D:\xampp\htdocs\projekfarmasi\system\BaseModel.php(1284): CodeIgniter\Model->countAllResults(false)
+#6 D:\xampp\htdocs\projekfarmasi\app\Models\StatCourseModel.php(32): CodeIgniter\BaseModel->paginate(10)
+#7 D:\xampp\htdocs\projekfarmasi\app\Controllers\Admin.php(526): App\Models\StatCourseModel->getAllPosttestScoresPaginated()
+#8 D:\xampp\htdocs\projekfarmasi\system\CodeIgniter.php(933): App\Controllers\Admin->nilai_posttest()
+#9 D:\xampp\htdocs\projekfarmasi\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+#10 D:\xampp\htdocs\projekfarmasi\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 D:\xampp\htdocs\projekfarmasi\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#12 D:\xampp\htdocs\projekfarmasi\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#13 D:\xampp\htdocs\projekfarmasi\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#14 {main}
+CRITICAL - 2025-04-20 12:48:18 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'user.id' in 'field list'
+[Method: GET, Route: admin/nilai_posttest]
+in SYSTEMPATH\Database\BaseConnection.php on line 688.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1720): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*) AS `numrows`
+FROM (
+SELECT `user`.`id`, `user`.`nama`, COUNT(posttest.id) as total_soal, SUM(CASE WHEN jawaban_posttest.id_pilihan = posttest.id_jawaban THEN 1 ELSE 0 END) as benar
+FROM `status_course`
+LEFT JOIN `jawaban_posttest` ON `jawaban_posttest`.`id_pasien` = `user`.`id`
+LEFT JOIN `posttest` ON `jawaban_posttest`.`id_posttest` = `posttest`.`id`
+WHERE `user`.`role` = :user.role:
+GROUP BY `user`.`id`
+) CI_count_all_results', [...], false)
+ 2 SYSTEMPATH\Model.php(678): CodeIgniter\Database\BaseBuilder->countAllResults(false)
+ 3 SYSTEMPATH\BaseModel.php(1284): CodeIgniter\Model->countAllResults(false)
+ 4 APPPATH\Models\StatCourseModel.php(32): CodeIgniter\BaseModel->paginate(10)
+ 5 APPPATH\Controllers\Admin.php(526): App\Models\StatCourseModel->getAllPosttestScoresPaginated()
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Admin->nilai_posttest()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-04-20 12:48:18 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'user.id' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 317.
+ 1 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT COUNT(*) AS `numrows`
+FROM (
+SELECT `user`.`id`, `user`.`nama`, COUNT(posttest.id) as total_soal, SUM(CASE WHEN jawaban_posttest.id_pilihan = posttest.id_jawaban THEN 1 ELSE 0 END) as benar
+FROM `status_course`
+LEFT JOIN `jawaban_posttest` ON `jawaban_posttest`.`id_pasien` = `user`.`id`
+LEFT JOIN `posttest` ON `jawaban_posttest`.`id_posttest` = `posttest`.`id`
+WHERE `user`.`role` = \'pasien\'
+GROUP BY `user`.`id`
+) CI_count_all_results')
+ 2 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT COUNT(*) AS `numrows`
+FROM (
+SELECT `user`.`id`, `user`.`nama`, COUNT(posttest.id) as total_soal, SUM(CASE WHEN jawaban_posttest.id_pilihan = posttest.id_jawaban THEN 1 ELSE 0 END) as benar
+FROM `status_course`
+LEFT JOIN `jawaban_posttest` ON `jawaban_posttest`.`id_pasien` = `user`.`id`
+LEFT JOIN `posttest` ON `jawaban_posttest`.`id_posttest` = `posttest`.`id`
+WHERE `user`.`role` = \'pasien\'
+GROUP BY `user`.`id`
+) CI_count_all_results')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1720): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*) AS `numrows`
+FROM (
+SELECT `user`.`id`, `user`.`nama`, COUNT(posttest.id) as total_soal, SUM(CASE WHEN jawaban_posttest.id_pilihan = posttest.id_jawaban THEN 1 ELSE 0 END) as benar
+FROM `status_course`
+LEFT JOIN `jawaban_posttest` ON `jawaban_posttest`.`id_pasien` = `user`.`id`
+LEFT JOIN `posttest` ON `jawaban_posttest`.`id_posttest` = `posttest`.`id`
+WHERE `user`.`role` = :user.role:
+GROUP BY `user`.`id`
+) CI_count_all_results', [...], false)
+ 4 SYSTEMPATH\Model.php(678): CodeIgniter\Database\BaseBuilder->countAllResults(false)
+ 5 SYSTEMPATH\BaseModel.php(1284): CodeIgniter\Model->countAllResults(false)
+ 6 APPPATH\Models\StatCourseModel.php(32): CodeIgniter\BaseModel->paginate(10)
+ 7 APPPATH\Controllers\Admin.php(526): App\Models\StatCourseModel->getAllPosttestScoresPaginated()
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Admin->nilai_posttest()
+ 9 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+10 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-04-20 12:48:18 --> [Caused by] mysqli_sql_exception: Unknown column 'user.id' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 312.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(312): mysqli->query('SELECT COUNT(*) AS `numrows`
+FROM (
+SELECT `user`.`id`, `user`.`nama`, COUNT(posttest.id) as total_soal, SUM(CASE WHEN jawaban_posttest.id_pilihan = posttest.id_jawaban THEN 1 ELSE 0 END) as benar
+FROM `status_course`
+LEFT JOIN `jawaban_posttest` ON `jawaban_posttest`.`id_pasien` = `user`.`id`
+LEFT JOIN `posttest` ON `jawaban_posttest`.`id_posttest` = `posttest`.`id`
+WHERE `user`.`role` = \'pasien\'
+GROUP BY `user`.`id`
+) CI_count_all_results', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT COUNT(*) AS `numrows`
+FROM (
+SELECT `user`.`id`, `user`.`nama`, COUNT(posttest.id) as total_soal, SUM(CASE WHEN jawaban_posttest.id_pilihan = posttest.id_jawaban THEN 1 ELSE 0 END) as benar
+FROM `status_course`
+LEFT JOIN `jawaban_posttest` ON `jawaban_posttest`.`id_pasien` = `user`.`id`
+LEFT JOIN `posttest` ON `jawaban_posttest`.`id_posttest` = `posttest`.`id`
+WHERE `user`.`role` = \'pasien\'
+GROUP BY `user`.`id`
+) CI_count_all_results')
+ 3 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT COUNT(*) AS `numrows`
+FROM (
+SELECT `user`.`id`, `user`.`nama`, COUNT(posttest.id) as total_soal, SUM(CASE WHEN jawaban_posttest.id_pilihan = posttest.id_jawaban THEN 1 ELSE 0 END) as benar
+FROM `status_course`
+LEFT JOIN `jawaban_posttest` ON `jawaban_posttest`.`id_pasien` = `user`.`id`
+LEFT JOIN `posttest` ON `jawaban_posttest`.`id_posttest` = `posttest`.`id`
+WHERE `user`.`role` = \'pasien\'
+GROUP BY `user`.`id`
+) CI_count_all_results')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1720): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*) AS `numrows`
+FROM (
+SELECT `user`.`id`, `user`.`nama`, COUNT(posttest.id) as total_soal, SUM(CASE WHEN jawaban_posttest.id_pilihan = posttest.id_jawaban THEN 1 ELSE 0 END) as benar
+FROM `status_course`
+LEFT JOIN `jawaban_posttest` ON `jawaban_posttest`.`id_pasien` = `user`.`id`
+LEFT JOIN `posttest` ON `jawaban_posttest`.`id_posttest` = `posttest`.`id`
+WHERE `user`.`role` = :user.role:
+GROUP BY `user`.`id`
+) CI_count_all_results', [...], false)
+ 5 SYSTEMPATH\Model.php(678): CodeIgniter\Database\BaseBuilder->countAllResults(false)
+ 6 SYSTEMPATH\BaseModel.php(1284): CodeIgniter\Model->countAllResults(false)
+ 7 APPPATH\Models\StatCourseModel.php(32): CodeIgniter\BaseModel->paginate(10)
+ 8 APPPATH\Controllers\Admin.php(526): App\Models\StatCourseModel->getAllPosttestScoresPaginated()
+ 9 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Admin->nilai_posttest()
+10 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+11 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-04-20 15:57:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-04-20 15:57:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-04-20 15:57:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-04-20 15:57:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-04-20 15:57:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-04-20 15:57:58 --> BadMethodCallException: Call to undefined method App\Models\StatCourseModel::getAllPosttestScoresPaginated
+[Method: GET, Route: admin/nilai_posttest]
+in SYSTEMPATH\Model.php on line 932.
+ 1 APPPATH\Controllers\Admin.php(526): CodeIgniter\Model->__call('getAllPosttestScoresPaginated', [])
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Admin->nilai_posttest()
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-04-20 15:58:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-04-20 15:58:21 --> BadMethodCallException: Call to undefined method App\Models\StatCourseModel::getAllPosttestScoresPaginated
+[Method: GET, Route: admin/nilai_posttest]
+in SYSTEMPATH\Model.php on line 932.
+ 1 APPPATH\Controllers\Admin.php(526): CodeIgniter\Model->__call('getAllPosttestScoresPaginated', [])
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Admin->nilai_posttest()
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-04-20 15:58:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-04-20 15:58:22 --> BadMethodCallException: Call to undefined method App\Models\StatCourseModel::getAllPosttestScoresPaginated
+[Method: GET, Route: admin/nilai_posttest]
+in SYSTEMPATH\Model.php on line 932.
+ 1 APPPATH\Controllers\Admin.php(526): CodeIgniter\Model->__call('getAllPosttestScoresPaginated', [])
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Admin->nilai_posttest()
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-04-20 15:58:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-04-20 15:58:22 --> BadMethodCallException: Call to undefined method App\Models\StatCourseModel::getAllPosttestScoresPaginated
+[Method: GET, Route: admin/nilai_posttest]
+in SYSTEMPATH\Model.php on line 932.
+ 1 APPPATH\Controllers\Admin.php(526): CodeIgniter\Model->__call('getAllPosttestScoresPaginated', [])
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Admin->nilai_posttest()
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-04-20 15:58:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-04-20 15:58:22 --> BadMethodCallException: Call to undefined method App\Models\StatCourseModel::getAllPosttestScoresPaginated
+[Method: GET, Route: admin/nilai_posttest]
+in SYSTEMPATH\Model.php on line 932.
+ 1 APPPATH\Controllers\Admin.php(526): CodeIgniter\Model->__call('getAllPosttestScoresPaginated', [])
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Admin->nilai_posttest()
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-04-20 15:58:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-04-20 15:58:22 --> BadMethodCallException: Call to undefined method App\Models\StatCourseModel::getAllPosttestScoresPaginated
+[Method: GET, Route: admin/nilai_posttest]
+in SYSTEMPATH\Model.php on line 932.
+ 1 APPPATH\Controllers\Admin.php(526): CodeIgniter\Model->__call('getAllPosttestScoresPaginated', [])
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Admin->nilai_posttest()
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-04-20 15:59:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-04-20 15:59:49 --> BadMethodCallException: Call to undefined method App\Models\StatCourseModel::getAllPosttestScoresPaginated
+[Method: GET, Route: admin/nilai_posttest]
+in SYSTEMPATH\Model.php on line 932.
+ 1 APPPATH\Controllers\Admin.php(526): CodeIgniter\Model->__call('getAllPosttestScoresPaginated', [])
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Admin->nilai_posttest()
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-04-20 16:00:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-04-20 16:00:16 --> BadMethodCallException: Call to undefined method App\Models\StatCourseModel::getAllPosttestScoresPaginated
+[Method: GET, Route: admin/nilai_posttest]
+in SYSTEMPATH\Model.php on line 932.
+ 1 APPPATH\Controllers\Admin.php(526): CodeIgniter\Model->__call('getAllPosttestScoresPaginated', [])
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Admin->nilai_posttest()
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-04-20 16:00:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-04-20 16:00:17 --> BadMethodCallException: Call to undefined method App\Models\StatCourseModel::getAllPosttestScoresPaginated
+[Method: GET, Route: admin/nilai_posttest]
+in SYSTEMPATH\Model.php on line 932.
+ 1 APPPATH\Controllers\Admin.php(526): CodeIgniter\Model->__call('getAllPosttestScoresPaginated', [])
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Admin->nilai_posttest()
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-04-20 16:00:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-04-20 16:00:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-04-20 16:00:31 --> BadMethodCallException: Call to undefined method App\Models\StatCourseModel::getAllPosttestScoresPaginated
+[Method: GET, Route: admin/nilai_posttest]
+in SYSTEMPATH\Model.php on line 932.
+ 1 APPPATH\Controllers\Admin.php(526): CodeIgniter\Model->__call('getAllPosttestScoresPaginated', [])
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Admin->nilai_posttest()
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-04-20 16:03:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-04-20 16:03:52 --> ErrorException: Undefined variable $statCourseModel
+[Method: GET, Route: admin/nilai_posttest]
+in APPPATH\Controllers\Admin.php on line 531.
+ 1 APPPATH\Controllers\Admin.php(531): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $statCourseModel', 'D:\\xampp\\htdocs\\projekfarmasi\\app\\Controllers\\Admin.php', 531)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Admin->nilai_posttest()
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-04-20 16:04:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-04-20 16:04:19 --> ErrorException: Undefined variable $users
+[Method: GET, Route: admin/nilai_posttest]
+in APPPATH\Views\admin\nilai-posttest-screen.php on line 81.
+ 1 APPPATH\Views\admin\nilai-posttest-screen.php(81): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $users', 'D:\\xampp\\htdocs\\projekfarmasi\\app\\Views\\admin\\nilai-posttest-screen.php', 81)
+ 2 SYSTEMPATH\View\View.php(234): include('D:\\xampp\\htdocs\\projekfarmasi\\app\\Views\\admin\\nilai-posttest-screen.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('admin/nilai-posttest-screen', [], true)
+ 5 APPPATH\Controllers\Admin.php(529): view('admin/nilai-posttest-screen', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Admin->nilai_posttest()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-04-20 16:06:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-04-20 16:07:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-04-20 16:07:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-04-20 16:07:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-04-20 16:07:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-04-20 16:07:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-04-20 16:12:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-04-20 16:12:42 --> Error: Call to a member function links() on null
+[Method: GET, Route: admin/nilai_posttest]
+in APPPATH\Views\admin\nilai-posttest-screen.php on line 98.
+ 1 SYSTEMPATH\View\View.php(234): include()
+ 2 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('admin/nilai-posttest-screen', [], true)
+ 4 APPPATH\Controllers\Admin.php(526): view('admin/nilai-posttest-screen', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Admin->nilai_posttest()
+ 6 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 7 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-04-20 16:13:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-04-20 16:13:09 --> Error: Call to a member function links() on null
+[Method: GET, Route: admin/nilai_posttest]
+in APPPATH\Views\admin\nilai-posttest-screen.php on line 98.
+ 1 SYSTEMPATH\View\View.php(234): include()
+ 2 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('admin/nilai-posttest-screen', [], true)
+ 4 APPPATH\Controllers\Admin.php(526): view('admin/nilai-posttest-screen', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Admin->nilai_posttest()
+ 6 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Admin))
+ 7 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-04-20 16:13:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-04-20 16:15:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-04-20 16:15:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-04-20 16:15:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-04-20 16:15:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-04-20 16:16:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-04-20 16:16:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-04-20 16:16:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-04-20 16:16:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-04-20 16:16:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-04-20 16:16:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-04-20 16:16:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-04-20 16:16:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-04-20 16:16:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-04-20 16:16:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-04-20 16:16:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-04-20 16:16:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-04-20 16:17:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-04-20 16:17:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-04-20 16:17:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-04-20 16:17:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-04-20 16:17:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-04-20 16:17:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-04-20 16:17:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-04-20 16:17:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-04-20 16:17:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-04-20 16:17:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-04-20 16:17:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-04-20 23:52:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-04-20 23:53:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-04-20 23:53:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-04-20 23:53:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-04-20 23:53:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-04-20 23:53:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-04-20 23:53:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-04-20 23:53:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-04-20 23:53:15 --> mysqli_sql_exception: Cannot add or update a child row: a foreign key constraint fails (`projectfarmasi`.`hasil_posttest`, CONSTRAINT `hasil_posttest_ibfk_1` FOREIGN KEY (`id_pasien`) REFERENCES `user` (`id`)) in D:\xampp\htdocs\projekfarmasi\system\Database\MySQLi\Connection.php:312
+Stack trace:
+#0 D:\xampp\htdocs\projekfarmasi\system\Database\MySQLi\Connection.php(312): mysqli->query('INSERT INTO `ha...', 0)
+#1 D:\xampp\htdocs\projekfarmasi\system\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `ha...')
+#2 D:\xampp\htdocs\projekfarmasi\system\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `ha...')
+#3 D:\xampp\htdocs\projekfarmasi\system\Database\BaseBuilder.php(2332): CodeIgniter\Database\BaseConnection->query('INSERT INTO `ha...', Array, false)
+#4 D:\xampp\htdocs\projekfarmasi\system\Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+#5 D:\xampp\htdocs\projekfarmasi\system\BaseModel.php(840): CodeIgniter\Model->doInsert(Array)
+#6 D:\xampp\htdocs\projekfarmasi\system\Model.php(802): CodeIgniter\BaseModel->insert(Array, false)
+#7 D:\xampp\htdocs\projekfarmasi\system\BaseModel.php(751): CodeIgniter\Model->insert(Array, false)
+#8 D:\xampp\htdocs\projekfarmasi\app\Controllers\Posttest.php(123): CodeIgniter\BaseModel->save(Array)
+#9 D:\xampp\htdocs\projekfarmasi\system\CodeIgniter.php(933): App\Controllers\Posttest->submit()
+#10 D:\xampp\htdocs\projekfarmasi\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Posttest))
+#11 D:\xampp\htdocs\projekfarmasi\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 D:\xampp\htdocs\projekfarmasi\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#13 D:\xampp\htdocs\projekfarmasi\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#14 D:\xampp\htdocs\projekfarmasi\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#15 {main}
+CRITICAL - 2025-04-20 23:53:15 --> CodeIgniter\Database\Exceptions\DatabaseException: Cannot add or update a child row: a foreign key constraint fails (`projectfarmasi`.`hasil_posttest`, CONSTRAINT `hasil_posttest_ibfk_1` FOREIGN KEY (`id_pasien`) REFERENCES `user` (`id`))
+[Method: POST, Route: posttest/submit]
+in SYSTEMPATH\Database\BaseConnection.php on line 688.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2332): CodeIgniter\Database\BaseConnection->query('INSERT INTO `hasil_posttest` (`id_pasien`, `jumlah_benar`, `jumlah_soal`, `nilai`) VALUES (:id_pasien:, :jumlah_benar:, :jumlah_soal:, :nilai:)', [...], false)
+ 2 SYSTEMPATH\Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+ 3 SYSTEMPATH\BaseModel.php(840): CodeIgniter\Model->doInsert([...])
+ 4 SYSTEMPATH\Model.php(802): CodeIgniter\BaseModel->insert([...], false)
+ 5 SYSTEMPATH\BaseModel.php(751): CodeIgniter\Model->insert([...], false)
+ 6 APPPATH\Controllers\Posttest.php(123): CodeIgniter\BaseModel->save([...])
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Posttest->submit()
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Posttest))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-04-20 23:53:15 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Cannot add or update a child row: a foreign key constraint fails (`projectfarmasi`.`hasil_posttest`, CONSTRAINT `hasil_posttest_ibfk_1` FOREIGN KEY (`id_pasien`) REFERENCES `user` (`id`))
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 317.
+ 1 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `hasil_posttest` (`id_pasien`, `jumlah_benar`, `jumlah_soal`, `nilai`) VALUES (\'15\', 2, 2, 100)')
+ 2 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `hasil_posttest` (`id_pasien`, `jumlah_benar`, `jumlah_soal`, `nilai`) VALUES (\'15\', 2, 2, 100)')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2332): CodeIgniter\Database\BaseConnection->query('INSERT INTO `hasil_posttest` (`id_pasien`, `jumlah_benar`, `jumlah_soal`, `nilai`) VALUES (:id_pasien:, :jumlah_benar:, :jumlah_soal:, :nilai:)', [...], false)
+ 4 SYSTEMPATH\Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+ 5 SYSTEMPATH\BaseModel.php(840): CodeIgniter\Model->doInsert([...])
+ 6 SYSTEMPATH\Model.php(802): CodeIgniter\BaseModel->insert([...], false)
+ 7 SYSTEMPATH\BaseModel.php(751): CodeIgniter\Model->insert([...], false)
+ 8 APPPATH\Controllers\Posttest.php(123): CodeIgniter\BaseModel->save([...])
+ 9 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Posttest->submit()
+10 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Posttest))
+11 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-04-20 23:53:15 --> [Caused by] mysqli_sql_exception: Cannot add or update a child row: a foreign key constraint fails (`projectfarmasi`.`hasil_posttest`, CONSTRAINT `hasil_posttest_ibfk_1` FOREIGN KEY (`id_pasien`) REFERENCES `user` (`id`))
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 312.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(312): mysqli->query('INSERT INTO `hasil_posttest` (`id_pasien`, `jumlah_benar`, `jumlah_soal`, `nilai`) VALUES (\'15\', 2, 2, 100)', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `hasil_posttest` (`id_pasien`, `jumlah_benar`, `jumlah_soal`, `nilai`) VALUES (\'15\', 2, 2, 100)')
+ 3 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `hasil_posttest` (`id_pasien`, `jumlah_benar`, `jumlah_soal`, `nilai`) VALUES (\'15\', 2, 2, 100)')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2332): CodeIgniter\Database\BaseConnection->query('INSERT INTO `hasil_posttest` (`id_pasien`, `jumlah_benar`, `jumlah_soal`, `nilai`) VALUES (:id_pasien:, :jumlah_benar:, :jumlah_soal:, :nilai:)', [...], false)
+ 5 SYSTEMPATH\Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+ 6 SYSTEMPATH\BaseModel.php(840): CodeIgniter\Model->doInsert([...])
+ 7 SYSTEMPATH\Model.php(802): CodeIgniter\BaseModel->insert([...], false)
+ 8 SYSTEMPATH\BaseModel.php(751): CodeIgniter\Model->insert([...], false)
+ 9 APPPATH\Controllers\Posttest.php(123): CodeIgniter\BaseModel->save([...])
+10 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Posttest->submit()
+11 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Posttest))
+12 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+13 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+15 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
